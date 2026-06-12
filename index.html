@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday My Love ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#ffdde1,#ee9ca7);
+    overflow-x:hidden;
+    color:white;
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+h1{
+    font-family:'Dancing Script',cursive;
+    font-size:4rem;
+    animation:fadeIn 2s ease;
+}
+
+.subtitle{
+    font-size:1.2rem;
+    margin-top:10px;
+    animation:fadeIn 3s ease;
+}
+
+.heart{
+    position:fixed;
+    color:#ff4d6d;
+    animation:float 8s linear infinite;
+    z-index:-1;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(100vh) scale(0);
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-100px) scale(1.5);
+        opacity:0;
+    }
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.gallery{
+    padding:60px 20px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.gallery img{
+    width:280px;
+    height:350px;
+    object-fit:cover;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+    transition:.4s;
+}
+
+.gallery img:hover{
+    transform:scale(1.05);
+}
+
+.message{
+    max-width:800px;
+    margin:auto;
+    padding:40px;
+    text-align:center;
+    font-size:1.1rem;
+    line-height:1.8;
+}
+
+.love-box{
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(10px);
+    padding:30px;
+    border-radius:20px;
+}
+
+.footer{
+    text-align:center;
+    padding:40px;
+    font-size:1.2rem;
+}
+
+.btn{
+    margin-top:25px;
+    padding:12px 25px;
+    border:none;
+    border-radius:50px;
+    background:white;
+    color:#ff4d6d;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:scale(1.08);
+}
+
+.hidden-message{
+    display:none;
+    margin-top:20px;
+    font-size:1.1rem;
+}
+
+.countdown{
+    margin-top:20px;
+    font-size:1.4rem;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div id="hearts"></div>
+
+<section class="hero">
+    <h1>Happy Birthday My Love ❤️</h1>
+    <p class="subtitle">To the most beautiful girl in my world ✨</p>
+
+    <div class="countdown" id="countdown"></div>
+
+    <button class="btn" onclick="showLove()">
+        Click Me 💕
+    </button>
+
+    <div class="hidden-message" id="secret">
+        You make every day brighter and every moment special. ❤️
+    </div>
+</section>
+
+<section class="gallery">
+    <!-- Replace these image URLs -->
+    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800" alt="">
+    <img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?w=800" alt="">
+    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800" alt="">
+</section>
+
+<section class="message">
+    <div class="love-box">
+        <h2>My Birthday Wish For You 💖</h2>
+        <br>
+
+        <p>
+        Happy Birthday, my love.
+        <br><br>
+
+        Today is special because it's the day someone truly amazing was born.
+        Thank you for all the smiles, happiness, support, and beautiful memories.
+
+        Every moment with you becomes a memory worth keeping forever.
+        Your kindness, your laugh, your beautiful heart, and everything about you
+        make my life brighter.
+
+        I hope this year brings you endless happiness, success, good health,
+        and everything you've been dreaming of.
+
+        No matter where life takes us, I will always be grateful for having you
+        in my life.
+
+        Happy Birthday, princess. ❤️✨
+        </p>
+
+        <br>
+
+        <h3>Forever Yours 💕</h3>
+        <p>Your Name</p>
+    </div>
+</section>
+
+<div class="footer">
+    Made with ❤️ just for you
+</div>
+
+<script>
+
+// Floating Hearts
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },8000);
+}
+
+setInterval(createHeart,300);
+
+// Secret Message
+function showLove(){
+    document.getElementById("secret").style.display="block";
+}
+
+// Birthday Countdown
+const birthday = new Date("June 13, 2026 00:00:00").getTime();
+
+setInterval(function(){
+
+    const now = new Date().getTime();
+    const distance = birthday - now;
+
+    if(distance <= 0){
+        document.getElementById("countdown").innerHTML =
+        "🎂 It's Your Birthday! 🎉";
+        return;
+    }
+
+    const hours = Math.floor(
+        (distance % (1000*60*60*24))/(1000*60*60)
+    );
+
+    const minutes = Math.floor(
+        (distance % (1000*60*60))/(1000*60)
+    );
+
+    const seconds = Math.floor(
+        (distance % (1000*60))/1000
+    );
+
+    document.getElementById("countdown").innerHTML =
+    `${hours}h ${minutes}m ${seconds}s until your special day ❤️`;
+
+},1000);
+
+</script>
+
+</body>
+</html>
